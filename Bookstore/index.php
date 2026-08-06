@@ -1,5 +1,4 @@
 <?php
-// Langsung lempar ke Bookstore.php tanpa mengubah file lain
-header("Location: Bookstore/Bookstore.php");
+header("Location: Bookstore.php");
 exit();
 ?>
