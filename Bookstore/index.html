@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LIX STORE</title>
+  <style>
+    /* RESET & BASE STYLES */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #E2C2AA; /* Warna latar warm ala Figma */
+      color: #2b2b2b;
+      padding-bottom: 40px;
+    }
+
+    /* NAVBAR */
+    header {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      width: 45px;
+      height: 45px;
+      background: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 12px;
+      border: 1px solid #999;
+    }
+
+    .nav-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .search-bar {
+      width: 320px;
+      padding: 6px 16px;
+      border-radius: 20px;
+      border: 1px solid #4a4a4a;
+      background-color: #D6B59D;
+      outline: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links button, .nav-links a {
+      background: none;
+      border: none;
+      font-weight: bold;
+      font-size: 15px;
+      cursor: pointer;
+      color: #2b2b2b;
+      text-decoration: none;
+    }
+
+    .nav-links button:hover, .nav-links a:hover {
+      text-decoration: underline;
+    }
+
+    .nav-right {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      font-weight: bold;
+    }
+
+    /* CONTAINER UTAMA */
+    .container {
+      max-width: 1000px;
+      margin: 20px auto;
+      padding: 0 15px;
+    }
+
+    /* HERO BANNER (HOME VIEW) */
+    .hero-banner {
+      background-color: #2B2B2B;
+      color: white;
+      padding: 30px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .hero-text h1 {
+      font-size: 38px;
+      line-height: 1;
+    }
+
+    .hero-books {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+    }
+
+    .book-card-small {
+      width: 80px;
+      height: 120px;
+      background-color: #fff;
+      flex-shrink: 0;
+      border-radius: 3px;
+    }
+
+    .book-card-small img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* GENRE GRID SECTION */
+    .genre-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .genre-card {
+      background-color: #2B2B2B;
+      color: #fff;
+      padding: 30px 15px;
+      border-radius: 8px;
+      text-align: center;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.2s, background-color 0.2s;
+    }
+
+    .genre-card:hover {
+      transform: translateY(-5px);
+      background-color: #3d3d3d;
+    }
+
+    /* BOOKS GRID SECTION */
+    .books-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .book-card {
+      background-color: #fff;
+      height: 190px;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+      cursor: pointer;
+    }
+
+    .book-card:hover {
+      transform: scale(1.05);
+    }
+
+    .book-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .back-btn {
+      background: #2B2B2B;
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-bottom: 15px;
+    }
+
+    /* UTILITY CLASS */
+    .hidden {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header>
+    <div class="logo">LIX</div>
+    
+    <div class="nav-center">
+      <input type="text" class="search-bar" placeholder="Cari buku...">
+      <div class="nav-links">
+        <a href="#" id="nav-home">Home</a>
+        <button id="nav-books">Books</button>
+      </div>
+    </div>
+
+    <div class="nav-right">
+      <span>🛒</span>
+      <a href="#" style="text-decoration: none; color: inherit;">LOG IN</a>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <!-- VIEW 1: HOME PAGE (DEFAULT) -->
+    <section id="view-home">
+      <!-- Banner Discount -->
+      <div class="hero-banner">
+        <div class="hero-text">
+          <h1>GET<br><strong>50%</strong><br>DISCOUNT</h1>
+        </div>
+        <div class="hero-books">
+          <div class="book-card-small"><img src="https://via.placeholder.com/80x120?text=Sherlock" alt="Sherlock"></div>
+          <div class="book-card-small"><img src="https://via.placeholder.com/80x120?text=Lupin" alt="Lupin"></div>
+          <div class="book-card-small"><img src="https://via.placeholder.com/80x120?text=Madilog" alt="Madilog"></div>
+        </div>
+      </div>
+
+      <h2>Rekomendasi Populer</h2>
+      <div class="books-grid">
+        <div class="book-card"><img src="https://via.placeholder.com/130x190?text=Pulang" alt="Buku"></div>
+        <div class="book-card"><img src="https://via.placeholder.com/130x190?text=Moby+Dick" alt="Buku"></div>
+        <div class="book-card"><img src="https://via.placeholder.com/130x190?text=Megalodon" alt="Buku"></div>
+        <div class="book-card"><img src="https://via.placeholder.com/130x190?text=Dunia" alt="Buku"></div>
+      </div>
+    </section>
+
+    <!-- VIEW 2: GENRE SELECTION (Keluar pas klik 'Books') -->
+    <section id="view-genres" class="hidden">
+      <h2>Pilih Genre Buku</h2>
+      <div class="genre-grid">
+        <div class="genre-card" onclick="openGenre('Mystery & Thriller')">🔍 Mystery</div>
+        <div class="genre-card" onclick="openGenre('Filsafat & Sejarah')">🏛️ Sejarah & Filsafat</div>
+        <div class="genre-card" onclick="openGenre('Novel & Fiksi')">📖 Novel Fiksi</div>
+        <div class="genre-card" onclick="openGenre('Sains & Alam')">🌊 Sains & Alam</div>
+      </div>
+    </section>
+
+    <!-- VIEW 3: DAFTAR BUKU PER GENRE -->
+    <section id="view-books-list" class="hidden">
+      <button class="back-btn" onclick="showGenres()">← Kembali ke Genre</button>
+      <h2 id="genre-title">Kategori Buku</h2>
+      
+      <div class="books-grid" id="genre-books-container">
+        <!-- Buku bakal diisi lewat JavaScript sesuai genre -->
+      </div>
+    </section>
+
+  </div>
+
+  <!-- JAVASCRIPT FOR LOGIC -->
+  <script>
+    // Data dummy buku berdasarkan Genre
+    const booksData = {
+      'Mystery & Thriller': ['Sherlock Holmes', 'Arsene Lupin', 'Keigo Higashino', '30 Bohong Besar'],
+      'Filsafat & Sejarah': ['Madilog', 'Soeharto', 'Wing Chun'],
+      'Novel & Fiksi': ['Pulang', 'Moby Dick', 'The House Next Door'],
+      'Sains & Alam': ['Megalodon', 'Kehidupan di Bumi', 'Gamera']
+    };
+
+    // Element Selector
+    const navHome = document.getElementById('nav-home');
+    const navBooks = document.getElementById('nav-books');
+
+    const viewHome = document.getElementById('view-home');
+    const viewGenres = document.getElementById('view-genres');
+    const viewBooksList = document.getElementById('view-books-list');
+    
+    const genreTitle = document.getElementById('genre-title');
+    const genreBooksContainer = document.getElementById('genre-books-container');
+
+    // 1. Klik Nav 'Home'
+    navHome.addEventListener('click', (e) => {
+      e.preventDefault();
+      viewHome.classList.remove('hidden');
+      viewGenres.classList.add('hidden');
+      viewBooksList.classList.add('hidden');
+    });
+
+    // 2. Klik Nav 'Books' -> Tampilkan Pilihan Genre
+    navBooks.addEventListener('click', () => {
+      showGenres();
+    });
+
+    function showGenres() {
+      viewHome.classList.add('hidden');
+      viewGenres.classList.remove('hidden');
+      viewBooksList.classList.add('hidden');
+    }
+
+    // 3. Klik Salah Satu Genre -> Tampilkan Daftar Buku
+    function openGenre(genreName) {
+      viewGenres.classList.add('hidden');
+      viewBooksList.classList.remove('hidden');
+
+      // Set judul genre
+      genreTitle.innerText = "Genre: " + genreName;
+
+      // Render buku-buku sesuai genre
+      const books = booksData[genreName] || [];
+      genreBooksContainer.innerHTML = ''; // bersihkan data lama
+
+      books.forEach(title => {
+        const card = document.createElement('div');
+        card.className = 'book-card';
+        card.innerHTML = `<img src="https://via.placeholder.com/130x190?text=${encodeURIComponent(title)}" alt="${title}">`;
+        genreBooksContainer.appendChild(card);
+      });
+    }
+  </script>
+</body>
+</html>
